@@ -33,6 +33,8 @@ class UserModelTest extends TestCase
     */
     function it_load_the_new_user_page()
     {
+        $this->withoutExceptionHandling();//muestro los errores en pantalla
+
         $this->get('/usuarios/nuevo')
         ->assertStatus(200)
         ->assertSee('Crear nuevo usuario');
