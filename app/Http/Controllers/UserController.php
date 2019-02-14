@@ -9,7 +9,16 @@ class UserController extends Controller
     //METODOS PUBLICOS O ACCIONES
     public function index()
     {
-        return 'Usuarios';
+        $users=[//se debe de pasar la variable a la view
+            'joel',
+            'juan',//arreglos estaticos
+            'carlos',
+            'Jorge',
+            '<script>alert("Clicker")</script>'
+        ];
+        $title='listado de usuarios';
+        return view('users',compact('users','title'));//llamamos a la vista, no se necesita colocar la extencion
+        //si el array se encuentra definido utilizamos el COMPACT
 
     }
 

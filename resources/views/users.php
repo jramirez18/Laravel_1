@@ -9,6 +9,12 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <h1>Usuarios</h1>
+    <h1><?= e($title) ?></h1><!-- El titulo va ser dinamico proveniente de la bd, si son datos dinamcos estos se deben de escapar-->
+    <ul>
+    <?php foreach ($users as $user):?>
+    <li><?= e($user) ?></li> <!--FUNCION HELPER e() lo pasa a texto ESCAPADO-->
+    <?php endforeach; ?>
+    </ul>
 </body>
 </html>
+<!--SINTAXIS MAS CORTA PARA ECHO ?=  -->
