@@ -18,29 +18,18 @@ Route::get('/', function () {
     return 'welcome';
 });
 
-Route::get('/usuarios',function(){
-    return 'Usuarios';
-});
+//ENLACE DE RUTA A UN CONTROLADOR
+Route::get('/usuarios','UserController@index');//nombre del controlador y el nombre del metodo
 
-route::get('/usuarios/nuevo',function(){
-    return 'Crear nuevo usuario';
+route::get('/usuarios/nuevo','UserController@create');
 
-});
-
-route::get('/usuarios/{id}',function($id){
-    return "Mostrando detalle del usuario: {$id}";
-
-});
+route::get('/usuarios/{id}','UserController@show')->where('id','[0-9]+');
 
 //se le agrego un ? al 2do parametro
-route::get('/saludo/{name}/{nickname?}',function($name,$nickname=null){
-    if($nickname)
-    {
-        return "Bienvenido {$name}, tu apodo es {$nickname}";
-    
-    }
-    else{
-        return "Bienvenido {$name}, no tienes apodo";
-    }
+route::get('/saludo/{name}/{nickname?}','WelcomeUserController'); //el controloador solo tiene un metodo por eso se definio asi
 
-});
+
+
+
+//NOTA: PARA REVISAR CUALQUIER ERROR HAY QUE VER LOS LOGS DE LA API
+
