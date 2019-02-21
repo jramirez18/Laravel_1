@@ -17,7 +17,16 @@ class UserModelTest extends TestCase
     {
         $this->get('/usuarios')
         ->assertStatus(200)
-        ->assertSee('listado de usuarios');
+        ->assertSee('');
+    }
+
+    /** @test */
+    function it_shows_a_message_dafault_if_there_are_empty() //eliminar la palabra public
+    {
+        $this->withoutExceptionHandling();
+        $this->get('/usuarios?empty')
+        ->assertStatus(200)
+        ->assertSee('No hay usuarios registrados');
     }
 
     /**@test */

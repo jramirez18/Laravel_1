@@ -9,6 +9,12 @@ class UserController extends Controller
     //METODOS PUBLICOS O ACCIONES
     public function index()
     {
+        if(request()->has('empty')) 
+        {
+            # code...
+            $users=[];
+        }else
+        {
         $users=[//se debe de pasar la variable a la view
             'joel',
             'juan',//arreglos estaticos
@@ -16,8 +22,10 @@ class UserController extends Controller
             'Jorge',
             '<script>alert("Clicker")</script>'
         ];
+        }
         $title='listado de usuarios';
         return view('users',compact('users','title'));//llamamos a la vista, no se necesita colocar la extencion
+    
         //si el array se encuentra definido utilizamos el COMPACT
 
     }
@@ -27,7 +35,11 @@ class UserController extends Controller
     //el nombre del controller y el nombre del metodo.
     public function show($id)//va tener un parametro
     {
-        return "Mostrando detalle del usuario: {$id}";//para concatenar una variable se usan las comillas "" 
+        //retornamos otra vistas
+        return view('users-show', compact('id'));
+
+
+        //return "Mostrando detalle del usuario: {$id}";//para concatenar una variable se usan las comillas "" 
     }
 
 
