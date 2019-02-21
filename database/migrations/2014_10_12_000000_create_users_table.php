@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
+// clases de laravel
+use Illuminate\Support\Facades\Schema; 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -11,15 +12,19 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+
+    //  aca especificamos lo que queremos que haga esta migracion
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            // columnas de nuestra tabla
+            // increments es un metodo
+            $table->increments('id');   //entero sin signo que se auto incrementa 
+            $table->string('name');     //varchar
+            $table->string('email')->unique(); //varchar, columna que va ser unica
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->rememberToken();  //este metodo no representa una columna en la bd, helpers que permiten generar columnas
+            $table->timestamps(); // metodo helper
         });
     }
 
@@ -28,7 +33,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down() //revierte la operacion del metodo UP
     {
         Schema::dropIfExists('users');
     }
