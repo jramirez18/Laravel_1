@@ -23,6 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('name');     //varchar
             $table->string('email')->unique(); //varchar, columna que va ser unica 
             $table->string('password');
+            $table->foreign('profession_id')->references('id')->on('professions');
+            $table->unsignedInteger('profession_id');//PARA NO CREAR MUCHAS MIGRACIONES, SI SE NOS OLVIDO AGREGAR UN CAMPO SOLO ABRIMOS LA MIGRACION 
+            //PRINCIPAL Y AHI AGREGAMOS EL NUEVO CAMO, Y LUEGO EJECUTAMO EL COMANDO PHP ARTISAN MIGRATE:REFRESH
             $table->rememberToken();  //este metodo no representa una columna en la bd, helpers que permiten generar columnas
             $table->timestamps(); // metodo helper
         });
